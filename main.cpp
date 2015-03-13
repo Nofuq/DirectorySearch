@@ -1,4 +1,4 @@
-//Переделанная прога Дани Синицина(дополнение в использовании рекурсив итератора
+//Changed from Danya Sinicin Added Recursive iterator in dir_runner
 #include <iostream>
 #include <string>
 #include <boost/filesystem.hpp>
