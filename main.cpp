@@ -33,7 +33,7 @@ void dir_runner(path main_p, ptree &pt){
 				
 				ptree current_file;
 				current_file.put("File Name", p.filename().string());
-				current_file.put("File Size (Bytes) ", file_size(*dir_itr) );
+				current_file.put("File Size (Bytes) ", file_size(p) );
 				current_file.put("File Path", p.string());
 				pt.push_back(make_pair("", current_file));
 		}
