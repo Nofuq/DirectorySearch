@@ -1,0 +1,14 @@
+{
+    "Path ( C:\\test )  Files ": [
+        {
+            "File Name": "test.txt",
+            "File Size (Bytes) ": "9",
+            "File Path": "C:\\test\\test.txt"
+        },
+        {
+            "File Name": "test.txt",
+            "File Size (Bytes) ": "9",
+            "File Path": "C:\\test\\test1\\test.txt"
+        }
+    ]
+}
