@@ -1,9 +1,11 @@
 //Changed from Danya Sinicin Added Recursive iterator in dir_runner
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <boost/filesystem.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
+#include "md5.h"
 
 using namespace std;
 using namespace boost::filesystem;
@@ -24,6 +26,7 @@ path main_path_get(){
 } 
 
 void dir_runner(path main_p, ptree &pt){
+	ifstream o;
 	for (recursive_directory_iterator dir_itr(main_p);
 		dir_itr != recursive_directory_iterator();
 		++dir_itr)
@@ -35,6 +38,13 @@ void dir_runner(path main_p, ptree &pt){
 				current_file.put("File Name", p.filename().string());
 				current_file.put("File Size (Bytes) ", file_size(p) );
 				current_file.put("File Path", p.string());
+				o.open(p.string(),ifstream::in);
+				string text;
+				while(!o.eof()){
+				text+=o.get();
+				}
+				current_file.put("File Hash Summ MD5 format ",md5(text));
+				o.close();
 				pt.push_back(make_pair("", current_file));
 		}
 	}
@@ -53,5 +63,6 @@ ptree path_reader(){
 
 int main(){
 	write_json("Directory_Files.json", path_reader()); 
+	system("pause");
 	return 0;
 }

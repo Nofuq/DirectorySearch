@@ -3,12 +3,14 @@
         {
             "File Name": "test.txt",
             "File Size (Bytes) ": "9",
-            "File Path": "C:\\test\\test.txt"
+            "File Path": "C:\\test\\test.txt",
+            "File Hash Summ": "8f8aef268abb20b9388d4345b4104492"
         },
         {
             "File Name": "test.txt",
             "File Size (Bytes) ": "9",
-            "File Path": "C:\\test\\test1\\test.txt"
+            "File Path": "C:\\test\\test1\\test.txt",
+            "File Hash Summ": "8f8aef268abb20b9388d4345b4104492"
         }
     ]
 }
