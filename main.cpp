@@ -25,8 +25,21 @@ path main_path_get(){
 	return p;
 } 
 
+string md5constructor(path p){
+ifstream o;
+
+o.open(p.string(),ifstream::in);
+				string text;
+				while(!o.eof()){
+				text+=o.get();
+				}
+string a=md5(text);
+o.close();
+return a;
+};
+
 void dir_runner(path main_p, ptree &pt){
-	ifstream o;
+	
 	for (recursive_directory_iterator dir_itr(main_p);
 		dir_itr != recursive_directory_iterator();
 		++dir_itr)
@@ -38,13 +51,7 @@ void dir_runner(path main_p, ptree &pt){
 				current_file.put("File Name", p.filename().string());
 				current_file.put("File Size (Bytes) ", file_size(p) );
 				current_file.put("File Path", p.string());
-				o.open(p.string(),ifstream::in);
-				string text;
-				while(!o.eof()){
-				text+=o.get();
-				}
-				current_file.put("File Hash Summ MD5 format ",md5(text));
-				o.close();
+				current_file.put("File Hash Summ MD5 format ",md5constructor(p));
 				pt.push_back(make_pair("", current_file));
 		}
 	}
@@ -62,6 +69,7 @@ ptree path_reader(){
 
 
 int main(){
+	setlocale(LC_ALL, "Russian");
 	write_json("Directory_Files.json", path_reader()); 
 	system("pause");
 	return 0;
